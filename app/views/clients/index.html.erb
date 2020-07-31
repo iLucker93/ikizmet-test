@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+
+<h1>Show precalculated by 2nd job in ii(1-4).</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>highest revenue all time</th>
+    <th>lowest revenue all time</th>
+    <th>least revenue during the last event (scheduled job)</th>
+    <th>Total revenue received revenue during the last event (scheduled job)</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <tr>
+    <td><%= number_to_currency(@precalculate.highest_revenue.first.revenue) %></td>
+    <td><%= number_to_currency(@precalculate.lowest_revenue.first.revenue) %></td>
+    <td><%= number_to_currency(@precalculate.least_revenue.first.revenue) %></td>
+    <td><%= number_to_currency(@precalculate.total_revenue.first.revenue) %></td>
+  </tr>
+  </tbody>
+</table>
+
+<h1>The list of 15 clients with top revenue:</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Client full name</th>
+    <th>Client revenue</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @clients.each do |client| %>
+    <tr>
+      <td><%= client.client_first_name %> <%= client.client_last_name %></td>
+      <td><%= number_to_currency(client.client_sales.last.revenue) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<br>
