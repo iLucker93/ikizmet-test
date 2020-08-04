@@ -38,8 +38,8 @@
   <tbody>
   <% @clients.each do |client| %>
     <tr>
-      <td><%= client.client_first_name %> <%= client.client_last_name %></td>
-      <td><%= number_to_currency(client.client_sales.last.revenue) %></td>
+      <td><%= client.full_name %></td>
+      <td><%= number_to_currency(client.revenue) %></td>
     </tr>
   <% end %>
   </tbody>

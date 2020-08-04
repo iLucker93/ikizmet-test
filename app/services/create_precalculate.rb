@@ -20,6 +20,7 @@ class CreatePrecalculate
     rescue ActiveRecord::RecordInvalid => e
       p e.message.to_s
     end
+    p 'Precalculate successfully updated'
   end
 
   private

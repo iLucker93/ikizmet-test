@@ -3,16 +3,18 @@ class ClientsController < ApplicationController
 
   def index
     @clients = Client.joins(:client_sales)
-                     .merge(ClientSale.order(revenue: :desc)).limit(15)
+                     .select("clients.id as id, CONCAT(clients.client_first_name, ' ', clients.client_last_name)AS full_name,
+                          client_sales.revenue as revenue")
+                     .order("client_sales.revenue DESC").limit(15)
     @precalculate = Precalculate.all
   end
 
   # test endpoint
   def create
-    # ClientInfo.call
+      # CreateClient.call(storage_id: Storage.last.id)
     # ClientSales.call
     # CreateClient.call(storage_id: Storage.last.id)
     # CreateClientSale.call(storage_id: Storage.last.id)
-    # CreatePrecalculate.call
+    CreatePrecalculate.call
   end
 end

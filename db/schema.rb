@@ -10,19 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_30_144444) do
+ActiveRecord::Schema.define(version: 2020_08_04_133427) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "client_sales", force: :cascade do |t|
-    t.integer "revenue"
+    t.bigint "revenue"
     t.bigint "ikizmet_client_id"
     t.bigint "client_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "total_revenue"
+    t.bigint "total_revenue"
     t.index ["client_id"], name: "index_client_sales_on_client_id"
+    t.index ["ikizmet_client_id"], name: "index_client_sales_on_ikizmet_client_id"
+    t.index ["revenue"], name: "index_client_sales_on_revenue"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -31,11 +33,12 @@ ActiveRecord::Schema.define(version: 2020_07_30_144444) do
     t.bigint "ikizmet_client_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["ikizmet_client_id"], name: "index_clients_on_ikizmet_client_id"
   end
 
   create_table "precalculates", force: :cascade do |t|
     t.string "full_name"
-    t.integer "revenue"
+    t.bigint "revenue"
     t.integer "type_list"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
