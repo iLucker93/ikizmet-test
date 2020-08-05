@@ -11,10 +11,10 @@ class ClientsController < ApplicationController
 
   # test endpoint
   def create
-      # CreateClient.call(storage_id: Storage.last.id)
+    # CreateClient.call(storage_id: Storage.last.id)
     # ClientSales.call
     # CreateClient.call(storage_id: Storage.last.id)
     # CreateClientSale.call(storage_id: Storage.last.id)
-    CreatePrecalculate.call
+    # CreateClientSale.call(storage_id: Storage.last.id)
   end
 end

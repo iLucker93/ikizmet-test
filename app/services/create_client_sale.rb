@@ -9,8 +9,7 @@ class CreateClientSale
         obj = ClientSale.find_or_initialize_by(ikizmet_client_id: client['client_id'],
                                                client_id: client_id)
         set_revenue = obj.revenue.nil? ? client['revenue'] : obj.revenue += client['revenue']
-        obj.assign_attributes(ikizmet_client_id: client['client_id'],
-                              revenue: client['revenue'],
+        obj.assign_attributes(revenue: client['revenue'],
                               total_revenue: set_revenue,
                               client_id: client_id)
         obj.save!

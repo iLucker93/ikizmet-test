@@ -22,9 +22,8 @@ ActiveRecord::Schema.define(version: 2020_08_04_133427) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "total_revenue"
-    t.index ["client_id"], name: "index_client_sales_on_client_id"
-    t.index ["ikizmet_client_id"], name: "index_client_sales_on_ikizmet_client_id"
-    t.index ["revenue"], name: "index_client_sales_on_revenue"
+    t.index ["client_id"], name: "index_client_sales_on_client_id", unique: true
+    t.index ["ikizmet_client_id"], name: "index_client_sales_on_ikizmet_client_id", unique: true
   end
 
   create_table "clients", force: :cascade do |t|
@@ -33,7 +32,7 @@ ActiveRecord::Schema.define(version: 2020_08_04_133427) do
     t.bigint "ikizmet_client_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["ikizmet_client_id"], name: "index_clients_on_ikizmet_client_id"
+    t.index ["ikizmet_client_id"], name: "index_clients_on_ikizmet_client_id", unique: true
   end
 
   create_table "precalculates", force: :cascade do |t|
